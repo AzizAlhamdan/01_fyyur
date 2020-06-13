@@ -1,0 +1,23 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Fyyur | Artists{% endblock %}
+{% block content %}
+<ul class="items" style="width: 35%;">
+	{% for artist in artists %}
+	<li>
+		<a href="/artists/{{ artist.id }}">
+			<i class="fas fa-users"></i>
+			<div class="item">
+				<h5>{{ artist.name }}</h5>
+			</div>
+
+			<form action="/artists/{{ artist.id }}/edit" method="get">
+				<input type="submit" value="Edit" style=" color:black; border: 1px;" data-toggle="tooltip" data-placement="bottom" title="Edit Venue">
+			</form>
+			<form action="/artists/{{ artist.id }}/delete" method="post">
+				<input type="submit" value="X" style=" color: red; border: none; background-color: white;" data-toggle="tooltip" data-placement="bottom" title="Delete Venue">
+			</form>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}
